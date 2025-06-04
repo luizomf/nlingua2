@@ -1,0 +1,125 @@
+[project]
+name = "nlingua2"
+version = "0.1.0"
+requires-python = ">=3.11"
+description = "CLI for transcribing audio/video with Whisper and translating/rebuilding SRT subtitles using Hugging Face NLLB models."
+readme = "README.md"
+license = { text = "MIT" }
+authors = [{ name = "Luiz Otávio", email = "luizomf@gmail.com" }]
+dependencies = [
+    "openai-whisper",
+    "torch>=2.1.0,<3.0.0",
+    "transformers>=4.40,<5",
+    "sentencepiece>=0.1.99,<0.2.0",
+    "typing_extensions>=4.13.0",
+]
+
+
+[project.scripts]
+nlingua2 = "nlingua2.cli:main"
+
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+# ============================
+# Lint e formatação (Ruff)
+# ============================
+[tool.ruff]
+line-length = 88
+target-version = "py311"
+fix = true
+show-fixes = true
+indent-width = 4
+exclude = ["venv", ".venv", "env", ".env", "node_modules", "__pycache__"]
+
+[tool.ruff.lint]
+select = [
+    "ASYNC",
+    "A",
+    "ANN",
+    "B",
+    "BLE",
+    "C4",
+    "C90",
+    "COM",
+    "E",
+    "EM",
+    "ERA",
+    "EXE",
+    "F",
+    "FBT",
+    "FIX",
+    "I",
+    "ICN",
+    "ISC",
+    "Q",
+    "RET",
+    "RSE",
+    "S",
+    "SIM",
+    "SLF",
+    "T10",
+    "T20",
+    "TC",
+    "TD",
+    "TRY",
+    "UP",
+    "W",
+    "YTT",
+    "RUF",
+    "N",
+]
+ignore = ["T201", "COM812"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**/*.py" = ["ANN201", "S101"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+line-ending = "lf"
+
+
+# ============================
+# Tipagem (Pyright)
+# ============================
+[tool.pyright]
+typeCheckingMode = "strict"
+pythonVersion = "3.11"
+include = ["src", 'tests']
+exclude = [
+    "**/venv",
+    "**/.venv",
+    "**/env",
+    "**/.env",
+    "**/node_modules",
+    "**/__pycache__",
+]
+venv = ".venv"
+venvPath = "."
+executionEnvironments = [{ root = "src" }]
+
+# ============================
+# Testes (Pytest)
+# ============================
+[tool.pytest.ini_options]
+addopts = "-s --color=yes --tb=short --verbosity=1"
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+
+# ============================
+# Build (opcional)
+# ============================
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[dependency-groups]
+dev = [
+    "pyright>=1.1.401",
+    "pytest>=8.4.0",
+    "pytest-xdist>=3.7.0",
+    "ruff>=0.11.12",
+]
