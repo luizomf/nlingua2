@@ -50,7 +50,7 @@ def translate_subrip_entries(
             translated_sentences.append(translated)
 
         print(f"🌍 Texto traduzido: {' '.join(translated_sentences).strip()}")
-        print("—" * 60)  # linha separadora
+        print("—" * 60)  # separator line
         print()
 
         translated_entry = SubRipEntry(
@@ -69,11 +69,11 @@ def translate_subrip_entries(
 
 def subrip_entries_to_str(subrip_entries: list[SubRipEntry]) -> str:
     subrip_str = ""
-    for sentence in subrip_entries:
-        subrip_str += f"{sentence.sequence}\n"
-        subrip_str += f"{sentence.start} --> {sentence.end}\n"
+    for entry in subrip_entries:
+        subrip_str += f"{entry.sequence}\n"
+        subrip_str += f"{entry.start} --> {entry.end}\n"
 
-        for text_line in sentence.sentences:
+        for text_line in entry.sentences:
             subrip_str += f"{text_line}\n"
 
         subrip_str += "\n"
@@ -90,20 +90,20 @@ def subrip_entries_to_file(
 
 
 def read_subrip_file(path: Path) -> str:
-    with path.open("r", encoding="utf-8") as file:
-        return file.read()
+    with path.open("r", encoding="utf-8") as f:
+        return f.read()
 
 
 def write_subrip_file(path: Path, file_content: str) -> None:
-    with path.open("w", encoding="utf-8") as file:
-        file.write(file_content)
+    with path.open("w", encoding="utf-8") as f:
+        f.write(file_content)
 
 
 def parse_subrip_entry(block: str) -> tuple[str, str, list[str]] | None:
     lines = EOL_RE.split(block)
 
     if len(lines) < 2:
-        msg = "Bloco subrip malformado."
+        msg = "Malformed SubRip block."
         print(msg)
         return None
 
