@@ -1,10 +1,10 @@
-class TimecodeException(Exception):
+class TimecodeError(Exception):
     pass
 
 
-class SubRipNotValidException(Exception):
+class SubRipNotValidError(Exception):
     pass
 
 
-class InvalidLanguageException(Exception):
+class InvalidLanguageError(Exception):
     pass

@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from nlingua2.exceptions import InvalidLanguageException
+from nlingua2.exceptions import InvalidLanguageError
 from nlingua2.models import TranslateFileToFileParams
 from nlingua2.settings import WHISPER_AND_NLLB_LANGUAGES
 
@@ -26,7 +26,7 @@ def validate_nllb_language(lang: str) -> None:
             f"Invalid NLLB language: {lang}. "
             "Use `nlingua2 nllb_languages` to see available languages."
         )
-        raise InvalidLanguageException(msg)
+        raise InvalidLanguageError(msg)
 
 
 def validate_whisper_language(lang: str) -> None:
@@ -35,7 +35,7 @@ def validate_whisper_language(lang: str) -> None:
             f"Invalid Whisper language: {lang}. "
             "Use `nlingua2 whisper_languages` to see available languages."
         )
-        raise InvalidLanguageException(msg)
+        raise InvalidLanguageError(msg)
 
 
 def validate_from_file_to_file(

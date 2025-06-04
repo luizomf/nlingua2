@@ -1,6 +1,6 @@
 import re
 
-from nlingua2.exceptions import TimecodeException
+from nlingua2.exceptions import TimecodeError
 from nlingua2.settings import WHISPER_AND_NLLB_LANGUAGES
 
 TIMECODE_RE = re.compile(
@@ -18,7 +18,7 @@ def get_subrip_timecodes_or_fail(text: str) -> tuple[str, str]:
 
     if matches is None:
         msg = f"Invalid timecodes for: {text}"
-        raise TimecodeException(msg)
+        raise TimecodeError(msg)
 
     return matches.group(1), matches.group(2)
 
