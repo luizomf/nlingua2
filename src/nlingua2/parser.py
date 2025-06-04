@@ -1,6 +1,6 @@
 from pathlib import Path
 
-from nlingua2.exceptions import SubRipNotValidException
+from nlingua2.exceptions import SubRipNotValidError
 from nlingua2.factories import create_subrip_entry
 from nlingua2.models import SubRipEntry
 from nlingua2.translator import translate
@@ -10,7 +10,7 @@ from nlingua2.utils import DOUBLE_EOL_RE, EOL_RE
 def subrip_text_to_entries(subrip: str) -> list[SubRipEntry]:
     if not subrip.strip():
         msg = "Input .srt file is empty or only whitespace."
-        raise SubRipNotValidException(msg)
+        raise SubRipNotValidError(msg)
 
     subrip_entry_lines = DOUBLE_EOL_RE.split(subrip)
     entries: list[SubRipEntry] = []

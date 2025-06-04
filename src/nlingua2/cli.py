@@ -3,9 +3,9 @@ import sys
 from pathlib import Path
 
 from nlingua2.exceptions import (
-    InvalidLanguageException,
-    SubRipNotValidException,
-    TimecodeException,
+    InvalidLanguageError,
+    SubRipNotValidError,
+    TimecodeError,
 )
 from nlingua2.models import TranslateFileToFileParams
 from nlingua2.runner import transcribe_from_file_to_file, translate_from_file_to_file
@@ -146,10 +146,10 @@ def main() -> None:
                 )
         else:
             parser.print_help()
-    except (SubRipNotValidException, TimecodeException) as e:
+    except (SubRipNotValidError, TimecodeError) as e:
         print(f"\n🔴 Error with SRT file: {e}\n")
         sys.exit(2)
-    except InvalidLanguageException as e:
+    except InvalidLanguageError as e:
         print(f"\n🔴 Language error: {e}\n")
         sys.exit(3)
     except (FileNotFoundError, FileExistsError) as e:
