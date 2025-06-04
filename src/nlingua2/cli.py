@@ -45,7 +45,10 @@ def main() -> None:
         "-f",
         dest="src_lang",
         required=True,
-        help=f"Source language (e.g., por_Latn). Use `nlingua2 {CMD_SHOW_LANGUAGES}` to see all available NLLB languages.",  # noqa: E501
+        help=(
+            f"Source language (e.g., english). Use `nlingua2 {CMD_SHOW_LANGUAGES}` "
+            "to see all available languages."
+        ),
     )
 
     translate_parser.add_argument(

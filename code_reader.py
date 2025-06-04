@@ -40,7 +40,7 @@ def main() -> None:
         "-g",
         "--glob",
         required=True,
-        help="Glob patten matching",
+        help="Glob pattern matching",
     )
 
     parser.add_argument(
