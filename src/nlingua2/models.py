@@ -29,4 +29,4 @@ class TranslateFileToFileParams:
     output: Path
     src_lang: str
     tgt_lang: str
-    force: str
+    force: bool
