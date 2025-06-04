@@ -19,7 +19,11 @@ CMD_SHOW_LANGUAGES = "show_languages"
 def main() -> None:
     parser = argparse.ArgumentParser(
         prog="nlingua2 - Any Language to Any Language",
-        description="We'll do that latter.",
+        description=(
+            "CLI for transcribing audio/video with Whisper and "
+            "translating/rebuilding SRT subtitles using Hugging Face "
+            "NLLB models."
+        ),
         formatter_class=argparse.ArgumentDefaultsHelpFormatter,
     )
 
