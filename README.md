@@ -1,4 +1,4 @@
-# 🧠 nlingua² – Any Language to Any Language
+# 🧠 nlingua² - Any Language to Any Language
 
 A command-line tool to **transcribe and translate `.srt` subtitles** using fully offline AI models (OpenAI Whisper + Meta NLLB).
 
@@ -16,12 +16,24 @@ A command-line tool to **transcribe and translate `.srt` subtitles** using fully
 
 ## ⚙️ Install with [uv](https://github.com/astral-sh/uv)
 
-If you're already using UV, just do your usual `uv sync`.
+If you're already using UV, just do your usual `uv sync`. E.g.,:
+
+```sh
+uv sync
+uv run nlingua2 --help
+# Or
+nlingua2 --help
+```
+
+Or even:
 
 ```bash
 uv venv
 source .venv/bin/activate  # or .venv\Scripts\activate on Windows
 uv pip install -e .
+uv run nlingua2 --help
+# Or
+nlingua2 --help
 ````
 
 > Requires Python 3.11. (Some libs like `sentencepiece` don't install on 3.12+)
@@ -40,7 +52,7 @@ nlingua2 show_languages
 
 ### 🗣️ Transcribe a video file into `.srt`
 
-You can use relative or absolute paths — both work.
+You can use relative or absolute paths, both work.
 
 ```bash
 nlingua2 transcribe \
@@ -90,7 +102,7 @@ nlingua2 transcribe \
 
 ## 📁 Suggested folder structure
 
-This is optional — just a nice way to keep your project organized. You can also pass full absolute paths.
+This is optional, just a nice way to keep your project organized. You can also pass full absolute paths.
 
 Example of a real command I just ran:
 
